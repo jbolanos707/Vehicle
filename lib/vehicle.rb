@@ -5,6 +5,7 @@ class Vehicle
     @make = make
     @model = model
     @year = year
+    @id = @@vehicles.length().+(1) #new property for every new vehicle that's initialized
   end
 
   define_method(:make) do
@@ -39,5 +40,9 @@ class Vehicle
   define_method(:worth_buying?) do
     american_cars = ["Chrysler", "Ford", "GM"]
     american_cars.include?(@make).&(self.age.<=(15))
+  end
+
+  define_method(:id) do
+    @id
   end
 end
