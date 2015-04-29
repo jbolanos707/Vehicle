@@ -5,6 +5,7 @@ describe(Vehicle) do
   describe("#make") do
     it("returns the make of the vehicle") do
       test_vehicle = Vehicle.new("Toyota", "Prius", 2000)
+      #test_vehicle.save() #added at the time of creating the
       expect(test_vehicle.make()).to(eq("Toyota"))
     end
   end
@@ -12,6 +13,7 @@ describe(Vehicle) do
   describe("#model") do
     it("returns the model fo the vehicle") do
       test_vehicle = Vehicle.new("Toyota", "Prius", 2000)
+      #test_vehicle.save() #added at the time of creating the
       expect(test_vehicle.model()).to(eq("Prius"))
     end
   end
@@ -19,7 +21,7 @@ describe(Vehicle) do
   describe("#year") do
     it("returns the year of the vehicle") do
       test_vehicle = Vehicle.new("Toyota", "Prius", 2000)
-      #test_vehicle.save()
+      #test_vehicle.save() #added at the time of creating the
       expect(test_vehicle.year()).to(eq(2000))
     end
   end
@@ -32,8 +34,16 @@ describe(Vehicle) do
  describe("#save") do
    it("adds a vehicle to the array of saved vehicles") do
      test_vehicle = Vehicle.new("Toyota", "Prius", 2000)
-     test_vehicle.save()
+     test_vehicle.save() #added at the time of creating the 
      expect(Vehicle.all()).to(eq([test_vehicle]))
+   end
+ end
+
+ describe(".clear") do
+   it("empties out all of the saved vehicles") do
+     Vehicle.new("Toyota", "Prius", 2000).save()
+     Vehicle.clear()
+     expect(Vehicle.all()).to(eq([]))
    end
  end
 
