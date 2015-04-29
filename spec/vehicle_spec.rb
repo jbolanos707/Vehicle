@@ -34,7 +34,7 @@ describe(Vehicle) do
  describe("#save") do
    it("adds a vehicle to the array of saved vehicles") do
      test_vehicle = Vehicle.new("Toyota", "Prius", 2000)
-     test_vehicle.save() #added at the time of creating the 
+     test_vehicle.save() #added at the time of creating the
      expect(Vehicle.all()).to(eq([test_vehicle]))
    end
  end
@@ -44,6 +44,13 @@ describe(Vehicle) do
      Vehicle.new("Toyota", "Prius", 2000).save()
      Vehicle.clear()
      expect(Vehicle.all()).to(eq([]))
+   end
+ end
+
+ describe("#age") do
+   it("returns the vehicles age") do
+     test_vehicle = Vehicle.new("Toyota", "Prius", 2000)
+     expect(test_vehicle.age()).to(eq(15))
    end
  end
 
