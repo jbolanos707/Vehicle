@@ -19,4 +19,8 @@ class Vehicle
     @year
   end
 
+  define_singleton_method(:all) do
+    @@vehicles
+  end
+
 end
