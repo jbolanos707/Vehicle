@@ -2,10 +2,14 @@ require('rspec')
 require('vehicle')
 
 describe(Vehicle) do
+  before() do  #line 5-7 added when Vehicle#save spec gets added
+    Vehicle.clear()
+  end
+
   describe("#make") do
     it("returns the make of the vehicle") do
       test_vehicle = Vehicle.new("Toyota", "Prius", 2000)
-      #test_vehicle.save() #added at the time of creating the
+      test_vehicle.save() #added at the time of creating Vehicle#save spec
       expect(test_vehicle.make()).to(eq("Toyota"))
     end
   end
@@ -13,7 +17,7 @@ describe(Vehicle) do
   describe("#model") do
     it("returns the model fo the vehicle") do
       test_vehicle = Vehicle.new("Toyota", "Prius", 2000)
-      #test_vehicle.save() #added at the time of creating the
+      test_vehicle.save() #added at the time of creating Vehicle#save spec
       expect(test_vehicle.model()).to(eq("Prius"))
     end
   end
@@ -21,8 +25,16 @@ describe(Vehicle) do
   describe("#year") do
     it("returns the year of the vehicle") do
       test_vehicle = Vehicle.new("Toyota", "Prius", 2000)
-      #test_vehicle.save() #added at the time of creating the
+      test_vehicle.save() #added at the time of creating Vehicle#save spec
       expect(test_vehicle.year()).to(eq(2000))
+    end
+  end
+
+  describe("#save") do
+    it("adds a vehicle to the array of saved vehicles") do
+      test_vehicle = Vehicle.new("Toyota", "Prius", 2000)
+      test_vehicle.save()
+      expect(Vehicle.all()).to(eq([test_vehicle]))
     end
   end
 
@@ -31,13 +43,6 @@ describe(Vehicle) do
       expect(Vehicle.all()).to(eq([]))
     end
   end
- describe("#save") do
-   it("adds a vehicle to the array of saved vehicles") do
-     test_vehicle = Vehicle.new("Toyota", "Prius", 2000)
-     test_vehicle.save() #added at the time of creating the
-     expect(Vehicle.all()).to(eq([test_vehicle]))
-   end
- end
 
  describe(".clear") do
    it("empties out all of the saved vehicles") do
